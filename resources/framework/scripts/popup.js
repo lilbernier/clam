@@ -19,6 +19,12 @@ export default class Popup
         
         document.body.appendChild(this.popupBase);
 
+
+        this.closeButtonDiv = document.createElement('div');
+        this.closeButtonDiv.id = 'closeButtonDiv';
+        this.closeButtonDiv.classList.add('closeButtonDiv');
+        this.popupBase.appendChild(this.closeButtonDiv);
+
         this.showPopup(false);
     }
 
@@ -29,7 +35,8 @@ export default class Popup
         closeButton.id = 'closeButton';
         closeButton.classList.add('closeButton');
         closeButton.append(_closeButtonName);
-        this.popupBase.appendChild(closeButton);
+        this.closeButtonDiv.appendChild(closeButton);
+        
         closeButton.addEventListener("click", this.closePopup.bind(this));
         
         return closeButton;

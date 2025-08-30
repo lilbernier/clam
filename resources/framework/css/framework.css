@@ -110,10 +110,25 @@ body {
       position: absolute;
     }
 
-    .popup .closeButton
+
+    .popup .closeButtonDiv
+    {
+      position: absolute;
+      bottom: 10%;
+      left: 50%;
+      width: 100%;
+      transform: translateX(-50%);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin: 0;
+      
+    }
+
+    /* .closeButtonDiv .closeButton
     {
       position: absolute;
       bottom: 10%;
       left: 50%;
       transform: translateX(-50%);
-    }
+    } */

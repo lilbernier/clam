@@ -29,7 +29,7 @@ export default class ClamApp extends Application
 
         let popupTest = new CanvasPopup()
         
-        ClamApp.GlobalDispatcher.on('CLOSE_CANVAS', (_width, _height)=>{this.clamCanvas.setCanvas('default', _width, _height)});
+        ClamApp.GlobalDispatcher.on('NEW_CANVAS', (_width, _height)=>{this.clamCanvas.setCanvas('default', _width, _height)});
     }
 
 

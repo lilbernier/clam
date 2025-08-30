@@ -27,9 +27,19 @@ export default class CanvasPopup extends Popup
         this.heightInput = this.addInput('height', this.height)
 
         let applyButton = this.addCloseButton('Apply');
+        applyButton.addEventListener('click', this.onApplyClick.bind(this))
+
         let cancelButton = this.addCloseButton('Cancel');
     }
 
+
+    onApplyClick()
+    {
+        this.width = this.widthInput.value ? this.widthInput.value : ClamApp.DefaultWidth
+        this.height = this.heightInput.value ? this.heightInput.value : ClamApp.DefaultHeight
+
+        ClamApp.GlobalDispatcher.emit('NEW_CANVAS', this.width, this.height);
+    }
 
     addInput(_input, _defaultValue)
     {
@@ -42,12 +52,6 @@ export default class CanvasPopup extends Popup
 
     closePopup()
     {
-        this.width = this.widthInput.value ? this.widthInput.value : ClamApp.DefaultWidth
-        this.height = this.heightInput.value ? this.heightInput.value : ClamApp.DefaultHeight
-        
         super.closePopup()
-
-        ClamApp.GlobalDispatcher.emit('CLOSE_CANVAS', this.width, this.height);
-
     }
 }
