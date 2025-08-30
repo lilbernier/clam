@@ -1,3 +1,4 @@
+import ClamApp from "./clam_app.js";
 
 export default class ClamCanvas
 {
@@ -8,16 +9,17 @@ export default class ClamCanvas
         this.clamCanvas.classList.add('clamvas');
         document.body.appendChild(this.clamCanvas);
 
-        this.width = 500;
-        this.height = 500;
+        this.width = ClamApp.DefaultWidth;
+        this.height = ClamApp.DefaultHeight;
         this.currentScale = 1;
 
-        this.scaleSpeed = .1;
+        this.scaleSpeed = .5;
         this.scaleMinMax = [0.1, 50];
 
-        this.setCanvas('default', this.width , this.height)
-        this.drawCanvasTest();
+        this.currentColor = ClamApp.DefaultPrimaryColor;
 
+        this.setCanvas('default', this.width , this.height)
+        // this.drawCanvasTest();
         this.setInputs()
     }
 
@@ -103,17 +105,14 @@ export default class ClamCanvas
 
         // Example: Draw a circle at the scaled mouse position
         // ctx.beginPath();
-        // ctx.arc(_x, _y, 5, 0, 2 * Math.PI);
-        // ctx.fillStyle = 'red';
+        // ctx.arc(_x, _y, 2, 0, 2 * Math.PI);
+        // ctx.fillStyle = this.currentColor;
         // ctx.fill();
 
-        ctx.fillStyle = "red"; // Set fill color
+        ctx.fillStyle = this.currentColor; // Set fill color
         ctx.fillRect(x, y, 1, 1); // Draw a filled rectangle (x, y, width, height)
 
     }
-
-
-
 
     deleteCanvas()
     {
@@ -123,7 +122,6 @@ export default class ClamCanvas
             this.canvas.remove()
         }
     }
-
 
     setCanvas(name, _width, _height)
     {
@@ -149,10 +147,34 @@ export default class ClamCanvas
 
         this.clamCanvas.appendChild(this.canvas);
 
-
         this.fitCanvasToScreen()
 
-        this.canvas.addEventListener('click', this.onClick.bind(this));
+        //this.canvas.addEventListener('click', this.onClick.bind(this));
+
+        let isDrawing = false;
+        this.canvas.addEventListener('mousedown', (e) => 
+        {
+            isDrawing = true;
+            this.onClick(e); // call immediately on click down if you want
+        });
+
+        this.canvas.addEventListener('mousemove', (e) => {
+            if (isDrawing) 
+            {
+                this.onClick(e); // keep drawing while dragging
+            }
+        });
+
+        this.canvas.addEventListener('mouseup', () => 
+        {
+            isDrawing = false; // stop drawing when mouse is released
+        });
+
+        // (optional) handle case when mouse leaves canvas
+        this.canvas.addEventListener('mouseleave', () => 
+        {
+            isDrawing = false;
+        });
     }
 
 
@@ -166,21 +188,4 @@ export default class ClamCanvas
         
         this.setScale(Math.min(widthMultiplier, heightMultiplier));
     }
-
-
-    drawCanvasTest()
-    {
-        this.currentContext = this.canvas.getContext("2d");
-
-        this.currentContext.fillStyle = "blue"; // Set fill color
-        this.currentContext.fillRect(10, 10, 100, 50); // Draw a filled rectangle (x, y, width, height)
-        this.currentContext.strokeStyle = "red"; // Set stroke color
-        this.currentContext.strokeRect(120, 10, 100, 50); // Draw an outlined rectangle
-
-    }
-
-
-
-
-
 }

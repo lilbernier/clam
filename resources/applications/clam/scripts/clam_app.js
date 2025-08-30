@@ -13,11 +13,12 @@ export default class ClamApp extends Application
     static GlobalDispatcher = null
     static DefaultWidth = 50
     static DefaultHeight = 50
+    static DefaultPrimaryColor = '#ffffff'
+
 
     constructor()
     {
         super()
-
 
         this.clamDispatcher = new Dispatcher()
         ClamApp.GlobalDispatcher = this.clamDispatcher;
@@ -28,7 +29,7 @@ export default class ClamApp extends Application
 
 
         let popupTest = new CanvasPopup()
-        
+        ClamApp.GlobalDispatcher.on('PRIMARY_COLOR_UPDATE', (_newColor)=>{this.clamCanvas.currentColor = _newColor});
         ClamApp.GlobalDispatcher.on('NEW_CANVAS', (_width, _height)=>{this.clamCanvas.setCanvas('default', _width, _height)});
     }
 

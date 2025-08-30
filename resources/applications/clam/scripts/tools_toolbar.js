@@ -14,9 +14,20 @@ export default class ToolsToolbar extends Toolbar
         this.brush = this.addToolBarButton('Brush')
 
         this.toolbarHost.classList.add('left');
-
-
+        this.primaryColorInput = this.addColorPicker()
+        this.primaryColorInput.value = ClamApp.DefaultPrimaryColor
+        this.primaryColorInput.addEventListener('change', ()=>{ClamApp.GlobalDispatcher.emit('PRIMARY_COLOR_UPDATE', this.primaryColorInput.value)})
         this.new.addEventListener("click", ()=>{ClamApp.GlobalDispatcher.emit('NEW_CANVAS_CLICK')});
+    }
+
+
+    addColorPicker()
+    {
+        let newBtn = document.createElement('input');
+        newBtn.type = 'color';
+        newBtn.classList.add('colorPicker')
+        this.toolbarHost.appendChild(newBtn);
+        return newBtn;
     }
 
 }

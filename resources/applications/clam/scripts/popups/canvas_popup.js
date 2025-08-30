@@ -20,8 +20,8 @@ export default class CanvasPopup extends Popup
         title.append('Create Canvas')
         this.popupBase.appendChild(title);
 
-        this.width = 500;
-        this.height = 500;
+        this.width = ClamApp.DefaultWidth;
+        this.height = ClamApp.DefaultHeight;
 
         this.widthInput = this.addInput('width', this.width);
         this.heightInput = this.addInput('height', this.height)
