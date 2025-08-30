@@ -27,6 +27,8 @@ export default class Toolbar
         // newBtn.classList.add('toolbar');
 
         this.toolbarHost.appendChild(newBtn);
+
+        return newBtn;
     }
 
 }

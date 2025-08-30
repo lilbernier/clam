@@ -31,11 +31,11 @@ export default class ClamCanvas
             let scale = this.currentScale
 
             if (deltaY > 0) {
-                scale += this.scaleSpeed;
+                scale -= this.scaleSpeed;
 
                 console.log('Scrolling down');
             } else if (deltaY < 0) {
-                scale -= this.scaleSpeed;
+                scale += this.scaleSpeed;
                 console.log('Scrolling up');
             }
             
@@ -46,7 +46,7 @@ export default class ClamCanvas
         document.addEventListener('keydown', function(event) {
             // Check if the pressed key is the Escape key
             if (event.key === 'Escape') {
-                this.setCanvas('default', 50, 20);
+                this.setCanvas('default', 1000, 100);
             }
         }.bind(this));
 
@@ -149,14 +149,23 @@ export default class ClamCanvas
 
         this.clamCanvas.appendChild(this.canvas);
 
-        
-        //Reset Scale
-        this.setScale(1);
 
+        this.fitCanvasToScreen()
 
         this.canvas.addEventListener('click', this.onClick.bind(this));
     }
 
+
+    fitCanvasToScreen()
+    {
+        let viewportWidth = window.innerWidth - 200;
+        let viewportHeight = window.innerHeight - 100;
+
+        let heightMultiplier = viewportHeight / this.height
+        let widthMultiplier = viewportWidth / this.width
+        
+        this.setScale(Math.min(widthMultiplier, heightMultiplier));
+    }
 
 
     drawCanvasTest()

@@ -1,4 +1,5 @@
 import Toolbar from "../../../framework/scripts/toolbar.js";
+import ClamApp from "./clam_app.js";
 
 export default class ToolsToolbar extends Toolbar
 { 
@@ -6,14 +7,16 @@ export default class ToolsToolbar extends Toolbar
     {
         super()
 
-        this.addToolBarButton('Save')
-        this.addToolBarButton('Load')
-        this.addToolBarButton('New')
+        this.save = this.addToolBarButton('Save')
+        this.load = this.addToolBarButton('Load')
+        this.new = this.addToolBarButton('New')
 
-
-        this.addToolBarButton('Brush')
+        this.brush = this.addToolBarButton('Brush')
 
         this.toolbarHost.classList.add('left');
+
+
+        this.new.addEventListener("click", ()=>{ClamApp.GlobalDispatcher.emit('NEW_CANVAS_CLICK')});
     }
 
 }

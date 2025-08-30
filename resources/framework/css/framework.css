@@ -98,3 +98,22 @@ body {
     .toolbar button:hover {
       background: oklch(from var(--col3) l c calc(h - 20));
     }
+
+    .popup
+    {
+      border: 1px solid  var(--col3);
+      background: var(--col2);
+      width: 50%;
+      height: 50%;
+      cursor: pointer;
+      padding: 0;
+      position: absolute;
+    }
+
+    .popup .closeButton
+    {
+      position: absolute;
+      bottom: 10%;
+      left: 50%;
+      transform: translateX(-50%);
+    }
