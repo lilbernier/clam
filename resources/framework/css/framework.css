@@ -1,0 +1,96 @@
+:root{
+  --col1: #353535;
+  --col2: #2e2e2e;
+  --col3: #f0f0f0;
+  --col4: #000000;
+
+}
+
+p {
+  color: var(--col4);
+}
+
+h1, h2, h3 {
+  color: var(--col4);
+}
+
+div {
+  color: var(--col4);
+} 
+
+body {
+    background-color: var(--col1);
+    color: var(--col4);
+}
+
+/* --- Vertical toolbar --- */
+    .toolbar {
+      position: fixed;
+      top: 0;
+      height: 100%;
+      width: 80px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 5px 5px;
+      background: var(--col2);
+      box-shadow: 2px 0 6px rgba(0,0,0,0.1);
+      gap: 15px;
+    }
+
+    .toolbar.left {
+      left: 0;
+      border-right: 2px solid  var(--col3);;
+    }
+
+    .toolbar.right {
+      right: 0;
+      border-left: 2px solid  var(--col3);;
+    }
+
+
+    .toolbar label {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      font-size: 12px;
+      text-align: center;
+      gap: 5px;
+    }
+
+    .toolbar input[type="color"] {
+      border: none;
+      background: none;
+      width: 40px;
+      height: 40px;
+      cursor: pointer;
+      padding: 0;
+    }
+
+    .toolbar input[type="number"] {
+      width: 50px;
+      padding: 5px;
+      border-radius: 6px;
+      text-align: center;
+    }
+
+    .toolbar button {
+      width: 40px;
+      height: 40px;
+      padding: 8px 0;
+      border: none;
+      color: var(--col4);
+      border-radius: 6px;
+      background: var(--col3);
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+    .toolbar button:hover {
+      background: oklch(from var(--col3) l c calc(h - 20));
+    }
+
+    .clamvas
+    {
+      background: oklch(from var(--col3) l c calc(h - 20));
+    }
