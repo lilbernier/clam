@@ -18,6 +18,15 @@ div {
   color: var(--col4);
 } 
 
+
+html, body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  width: 100%;
+  overflow: hidden;
+}
+
 body {
     background-color: var(--col1);
     color: var(--col4);
@@ -87,10 +96,5 @@ body {
     }
 
     .toolbar button:hover {
-      background: oklch(from var(--col3) l c calc(h - 20));
-    }
-
-    .clamvas
-    {
       background: oklch(from var(--col3) l c calc(h - 20));
     }

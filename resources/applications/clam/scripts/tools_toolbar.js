@@ -8,7 +8,11 @@ export default class ToolsToolbar extends Toolbar
 
         this.addToolBarButton('Save')
         this.addToolBarButton('Load')
-        this.addToolBarButton('Test')
+        this.addToolBarButton('New')
+
+
+        this.addToolBarButton('Brush')
+
         this.toolbarHost.classList.add('left');
     }
 
