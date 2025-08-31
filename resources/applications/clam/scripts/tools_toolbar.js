@@ -18,6 +18,8 @@ export default class ToolsToolbar extends Toolbar
         this.primaryColorInput.value = ClamApp.DefaultPrimaryColor
         this.primaryColorInput.addEventListener('change', ()=>{ClamApp.GlobalDispatcher.emit('PRIMARY_COLOR_UPDATE', this.primaryColorInput.value)})
         this.new.addEventListener("click", ()=>{ClamApp.GlobalDispatcher.emit('NEW_CANVAS_CLICK')});
+
+        this.save.addEventListener("click", ()=>{ClamApp.GlobalDispatcher.emit('SAVE_CANVAS')});
     }
 
 
