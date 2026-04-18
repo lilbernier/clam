@@ -1,0 +1,35 @@
+<head>
+    <meta charset="utf-8" />
+    <title>PSX - Converter</title>
+    <link rel="stylesheet" href="../../framework/css/framework.css"/>
+    <link rel="stylesheet" href="./css/psx.css"/>
+</head>
+<body>
+    <div id="image_modal" class="modal">
+        
+        <span class="close_btn" id="close_btn">Close</span>
+        <span id="zoom_in" class="zoom_in_btn">+</span> 
+        <span id="zoom_out" class="zoom_out_btn">-</span>
+        <img class="modal_content" id="full_image">
+    </div>
+
+    <div style="display: inline">
+        <div>all processing is completely client sided, feel free to use your own images without worrying about your data being shared with anyone, even big AI. I can not attest the same to the browser you are using</div>
+        <div class="drag_n_drop" id="drag_n_drop">Drag and Drop Images here</div>
+        <label for="width_input">WIDTH</label>
+        <input id="width_input"  value="128"/>
+        <label for="height_input">HEIGHT</label>
+        <input id="height_input" value="128"/>
+
+        <button class="convert" id="convert_button">Convert images to PSX</button>
+        <button id="save_button">Save images</button>
+
+    </div>
+</body>
+
+<script type="module">
+    import psx_converter from './scripts/psx_convert.js';
+    new psx_converter()
+</script>
+
+</html>

@@ -32,6 +32,30 @@ body {
     color: var(--col4);
 }
 
+.button {
+  display: inline-block;
+  padding: 10px 20px;
+  background-color: #414141;
+  color: white;
+  text-decoration: none;
+  border-radius: 5px;
+}
+
+.header {
+  padding: 15px;
+  text-align: center;
+  background: #91c5ff;
+  color: white;
+  font-size: 30px;
+}
+
+.disabled {
+  pointer-events: none; /* Stops mouse clicks */
+  cursor: default;     /* Removes the pointer finger */
+  opacity: 0.6;        /* Visually grays out the button */
+  text-decoration: none;
+}
+
 /* --- Vertical toolbar --- */
     .toolbar {
       position: fixed;
@@ -124,6 +148,7 @@ body {
       margin: 0;
       
     }
+
 
     /* .closeButtonDiv .closeButton
     {
