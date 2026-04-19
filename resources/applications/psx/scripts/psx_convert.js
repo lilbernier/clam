@@ -155,14 +155,16 @@ export default class PSXConverter
         canvas.width = _targetWidth;
         canvas.height = _targetHeight;
 
-        ctx.imageSmoothingEnabled = false;
-        ctx.webkitImageSmoothingEnabled = false;
-        ctx.mozImageSmoothingEnabled = false; 
+        ctx.imageSmoothingEnabled = true;
+        ctx.webkitImageSmoothingEnabled = true;
+        ctx.mozImageSmoothingEnabled = true; 
+        ctx.imageSmoothingQuality = 'high';
 
         ctx.drawImage(_image, 0, 0, _targetWidth, _targetHeight);
 
         return canvas.toDataURL('image/png');
     }
+
 
 
     // onSaveCanvas()
